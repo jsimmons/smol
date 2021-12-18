@@ -1,3 +1,5 @@
+cargo-features = ["strip"]
+
 [package]
 name = "smol"
 version = "0.1.0"
@@ -7,5 +9,6 @@ edition = "2021"
 
 [profile.release]
 opt-level = "z"
+strip = "symbols"
 
 [dependencies]

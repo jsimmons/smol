@@ -7,6 +7,9 @@
 fn _start() {
     let buf = "Hello, World!\n";
     unsafe {
+        // align stack (if we want to call real code)
+        // asm!("xor rbp, rbp", "pop rdi", "mov rsi, rsp", "and rsp, -16");
+
         asm!(
             "syscall",
             in("rax") 1, // syscall number
@@ -16,6 +19,13 @@ fn _start() {
             out("rcx") _, // clobbered by syscalls
             out("r11") _, // clobbered by syscalls
         );
+
+        // exit(0)
+        asm!(
+            "syscall",
+            in("rax") 60,
+            in("rdi") 0,
+        )
     }
 }
 
