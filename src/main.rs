@@ -1,7 +1,8 @@
 #![no_std]
 #![no_main]
 #![feature(lang_items)]
-#![feature(asm)]
+
+use core::arch::asm;
 
 #[no_mangle]
 fn _start() {
